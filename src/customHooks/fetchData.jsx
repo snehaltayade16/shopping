@@ -2,12 +2,12 @@ import { useState } from "react"
 import { useEffect } from "react"
 
 function useFetchData(url){
-    const[productData, setData] = useState(null)
+    const[productData, setData] = useState([])
     const[loading, setLoading] = useState(true)
-    console.log(url)
     useEffect(() => {
         async function getData(){
             const data =  await fetch(url)
+            console.log('custom hook',data)
             if(data.status == 200)
             {
                 console.log('res 200')
@@ -17,7 +17,6 @@ function useFetchData(url){
         }
         getData()
     },[url])
-
     return {productData, loading}
 }
 

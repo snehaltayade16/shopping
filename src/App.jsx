@@ -2,33 +2,39 @@ import './App.css'
 import useFetchData  from './customHooks/fetchData'
 import Header from './Components/Header'
 import Filter from './Components/filterOption'
-// import ProductsCards from './Components/ProductsCards'
-// import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import ProductsCards from './Components/ProductsCards'
 
 function App() {
-    const {productData, isLoding} = useFetchData('https://fakestoreapi.com/products')
-    console.log('wwwwwwwwwww',productData, isLoding)
-    // const [addProductsToCart, setAddProductsToCart] = useState([])
-    // function addToCart(selectedItems){
-    //   setAddProductsToCart(prev => [...prev, selectedItems])
-    //   console.log(addProductsToCart)
-    // }
-    function filterOptions(price){
-     var filteredItems = productData.filter((items) => items.price > price)
-      console.log('after filter',filteredItems)
+    const {productData,loading} = useFetchData('https://fakestoreapi.com/products')
+    const [addProductsToCart, setAddProductsToCart] = useState([])
+    const [uiData, setUiData] = useState(productData)
+    useEffect(() => {
+      setUiData(productData)
+    },[productData])
+    function addToCart(selectedItems){
+      setAddProductsToCart(prev => [...prev, selectedItems])
+    }
+    function applyFilter(item){
+      if(item != 0) {
+        setUiData(productData.filter((item) => item.price < 100))
+      }else{
+      setUiData(productData)
+      }
     }
   return (
     <>
     <section className='h-full w-full flex flex-col'>
-      {/* <Header cartProduct={addProductsToCart} /> */}
+      <Header cartProduct={addProductsToCart} />
       <main className='flex flex-grow overflow-y-auto relative'>
         <div className='absolute w-full h-full flex'>
-          <aside className="w-64 h-full overflow-y-auto">
+          <aside className="w-64 h-full overflow-y-auto p-2.5">
             <div className='w-full h-full'>
-              <Filter onFilterChange={filterOptions}/>
+              <Filter onFilterChange={applyFilter}/>
             </div>
           </aside>
-          {/* <ProductsCards cardData={productData} isLoding={productData.loading}  onAddToCartProduct={addToCart}/> */}
+          
+            <ProductsCards cardData={uiData} isLoding={loading} onAddToCartProduct={addToCart}/>
         </div>
       </main>
       <footer className='h-12 flex items-center justify-center'>
