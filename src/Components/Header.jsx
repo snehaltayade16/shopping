@@ -1,7 +1,7 @@
 import HeaderLogo from '../assets/grocery-cart.png'
 import HomeImg from '../assets/home.png'
 import Cart from '../assets/menu-shopping-cart.png'
-import User from '../assets/User.png'
+import User from '../assets/user.png'
 import Category from '../assets/category.png'
 function Header({cartProduct}){
     console.log('header',cartProduct)

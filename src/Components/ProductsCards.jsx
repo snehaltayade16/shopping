@@ -1,13 +1,8 @@
-import { useState } from "react";
 
-function ProductsCards({cardData, isLoding, onAddToCart}){
-    const [cartProducts, setCartProducts] = useState([])
-    console.log('data recive',cardData,isLoding,onAddToCart)
+function ProductsCards({cardData, isLoding, onAddToCartProduct}){
+    // const [cartProducts, setCartProducts] = useState([])
+    console.log('data recive',cardData,isLoding,onAddToCartProduct)
     // Add to cart function
-    function addToCart(selectedItem){
-       setCartProducts(prev => [...prev, selectedItem])
-       console.log(cartProducts.length + 1)
-    }
     return(
         isLoding == true ? 
         <div className="w-full h-full flex items-center justify-center">Loading.....</div> 
@@ -25,7 +20,7 @@ function ProductsCards({cardData, isLoding, onAddToCart}){
                             </div>
                             <div className="flex items-center justify-between">
                                 <p>RS. {item.price}</p>
-                                <div className="cursor-pointer" onClick={() => onAddToCart(item)}><p>Add to cart</p></div>
+                                <div className="cursor-pointer" onClick={() => onAddToCartProduct(item)}><p>Add to cart</p></div>
                             </div>
                         </div>
                     </div>
