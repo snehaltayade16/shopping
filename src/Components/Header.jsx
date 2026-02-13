@@ -35,7 +35,7 @@ function Header({cartProduct}){
                     <img src={HeaderLogo} className='h-full w-full' />
                 </div>
                 <div className="flex">
-                    <ul className="flex">
+                    {/* <ul className="flex">
                         {
                             headerLinks.map((items) => (
                             <Link to={items.path}>
@@ -49,7 +49,7 @@ function Header({cartProduct}){
                                 </li>
                             </Link>))
                         }
-                    </ul>
+                    </ul> */}
                 </div>
             </div>
         </header>

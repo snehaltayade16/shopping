@@ -2,7 +2,8 @@
 function ProductsCards({cardData, isLoding, onAddToCartProduct}){
     // Add to cart function
     return(
-        isLoding == true  ? 
+        
+        isLoding == true || cardData.length == 0  ? 
         <div className="w-full h-full flex items-center justify-center">Loading.....</div> 
         : <div className="w-full h-full grid gap-5 grid-cols-[repeat(auto-fill,minmax(200px,1fr))]">
             {
