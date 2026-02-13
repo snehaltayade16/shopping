@@ -1,24 +1,24 @@
-import { useEffect, useState } from "react"
+// import { useEffect, useState } from "react"
+
+import {useState } from "react"
 
 function FilterOptions({onFilterChange}){
-    const [isChecked, setIsChecked] = useState(false)
-    console.log('ischecked',isChecked)
-   useEffect(() => {
-    if(isChecked)
-    {
-        onFilterChange(100)
-    }else{
-         onFilterChange(0)
-    }
-   },[isChecked])
-   const options = [{
+    // 
+    const[priceRangeValue, setPriceRangeValue] = useState(1000)
+    const options = [{
         title:'Price'
     }]
     return(
         <>
             {
                 options.map((options) => (
-                    <div key={options.title}> <input type="checkbox" checked={isChecked} onChange={() => setIsChecked(!isChecked)}/> {options.title} </div>
+                    <div key={options.title}> 
+                        <p>{options.title}</p>
+                        <div className="w-full">
+                            <p>0 - {priceRangeValue}</p>
+                            <input  type="range" min="0" max="1000" value={priceRangeValue}  className="w-full" onChange={(e) => setPriceRangeValue(e.target.value)} onMouseUp={() => onFilterChange(priceRangeValue)} onTouchEnd={() => onFilterChange(priceRangeValue)}></input>
+                        </div>
+                    </div>
                 ))
             }
         </>
