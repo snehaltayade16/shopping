@@ -12,9 +12,9 @@ function Header({cartProduct}){
             path : '/'
         },
         {
-            title : 'Products',
+            title : 'Category',
             img: Category,
-            path : '/products'
+            path : '/category'
         },
         {
             title : 'Cart',
@@ -35,21 +35,21 @@ function Header({cartProduct}){
                     <img src={HeaderLogo} className='h-full w-full' />
                 </div>
                 <div className="flex">
-                    {/* <ul className="flex">
+                    <ul className="flex">
                         {
                             headerLinks.map((items) => (
-                            <Link to={items.path}>
+                            <Link key={items.path} to={items.path}>
                                 <li key={items.title} title={items.title} className="relative pl-2.5 cursor-pointer"><img src={items.img} className="h-5" /> 
-                                {
+                                {/* {
                                     items.title == 'Cart' && cartProduct.length > 0 &&
                                     (
                                         <span className='absolute flex items-center justify-center text-sm font-bold aspect-square bg-red-600 h-5 rounded-full top-[-10px] right-[-10px]' >{cartProduct.length > 5 ? '5+' : cartProduct.length}</span>
                                     )
-                                }
+                                } */}
                                 </li>
                             </Link>))
                         }
-                    </ul> */}
+                    </ul>
                 </div>
             </div>
         </header>
