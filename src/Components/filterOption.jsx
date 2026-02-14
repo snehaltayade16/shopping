@@ -15,8 +15,8 @@ function FilterOptions({onFilterChange}){
                     <div key={options.title}> 
                         <p>{options.title}</p>
                         <div className="w-full">
-                            <p>0 - {priceRangeValue}</p>
-                            <input  type="range" min="0" max="1000" value={priceRangeValue}  className="w-full" onChange={(e) => setPriceRangeValue(e.target.value)} onMouseUp={() => onFilterChange(priceRangeValue)} onTouchEnd={() => onFilterChange(priceRangeValue)}></input>
+                            <p>20 - {priceRangeValue}</p>
+                            <input  type="range" min="20" max="1000" value={priceRangeValue}  className="w-full" onChange={(e) => setPriceRangeValue(e.target.value)} onMouseUp={() => onFilterChange(priceRangeValue)} onTouchEnd={() => onFilterChange(priceRangeValue)}></input>
                         </div>
                     </div>
                 ))
