@@ -4,7 +4,10 @@ import Cart from '../assets/menu-shopping-cart.png'
 import User from '../assets/user.png'
 import Category from '../assets/category.png'
 import { Link } from 'react-router-dom'
+import { CartContext } from '../context/CartContext'
+import { useContext } from 'react'
 function Header({cartProduct}){
+    const {cart} = useContext(CartContext)
     const headerLinks = [
         {
             title : 'Home',
@@ -40,12 +43,12 @@ function Header({cartProduct}){
                             headerLinks.map((items) => (
                             <Link key={items.path} to={items.path}>
                                 <li key={items.title} title={items.title} className="relative pl-2.5 cursor-pointer"><img src={items.img} className="h-5" /> 
-                                {/* {
-                                    items.title == 'Cart' && cartProduct.length > 0 &&
+                                {
+                                    items.title == 'Cart' && cart.length > 0 &&
                                     (
-                                        <span className='absolute flex items-center justify-center text-sm font-bold aspect-square bg-red-600 h-5 rounded-full top-[-10px] right-[-10px]' >{cartProduct.length > 5 ? '5+' : cartProduct.length}</span>
+                                        <span className='text-white absolute flex items-center justify-center text-sm font-bold aspect-square bg-red-600 h-5 rounded-full top-[-10px] right-[-10px]' >{cart.length > 5 ? '5+' : cart.length}</span>
                                     )
-                                } */}
+                                }
                                 </li>
                             </Link>))
                         }
