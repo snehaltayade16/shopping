@@ -1,5 +1,6 @@
 
 import { CartContext  } from "../context/CartContext";
+import {Link} from 'react-router-dom'
 import { useContext } from "react";
 function ProductsCards({data, isLoading}){
     const {addToCart} = useContext(CartContext)
@@ -13,9 +14,11 @@ function ProductsCards({data, isLoading}){
                     {
                         data?.map((item) => (
                             <div className="aspect-[2/3] flex flex-col p-2.5 rounded-lg border" key={item.id}>
-                                <div className="w-full h-52 rounded-md border">
-                                    <img src={item.image} className="h-full w-full"/>
-                                </div>
+                                <Link to={`/productDetails/${item.id}`}>
+                                    <div className="w-full h-52 rounded-md border">
+                                        <img src={item.image} className="h-full w-full"/>
+                                    </div>
+                                </Link>
                                 <div className="flex flex-grow flex-col justify-between">
                                     <div>
                                         <p title={item.title}  className="truncate text-lg">{item.title}</p>
@@ -23,7 +26,7 @@ function ProductsCards({data, isLoading}){
                                     </div>
                                     <div className="flex items-center justify-between">
                                         <p>RS. {item.price}</p>
-                                        <div className="cursor-pointer" onClick={() => addToCart(item)}><p>Add to cart</p></div>
+                                        <div className="cursor-pointer" onClick={(e) => {  e.stopPropagation(), addToCart(item)}}><p>Add to cart</p></div>
                                     </div>
                                 </div>
                             </div>

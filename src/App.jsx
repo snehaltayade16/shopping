@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 // import { useEffect, useState } from 'react';
 import Category from './Components/Category';
 import Cart from './Components/Cart'
+import ProductDetails from './Components/ProductDetails';
 import { useContext } from 'react';
 import {ProductContext} from './context/ProductContext'
 import { CartContext } from './context/CartContext';
@@ -23,6 +24,7 @@ function App() {
             <Route path="/" element={<Home uiData={data}  isLoading={loading}/>}></Route>
             <Route path="/cart" element={<Cart cartData={cart} />}></Route>
             <Route path="/category" element={<Category />}></Route>
+            <Route path="/productDetails/:id" element={<ProductDetails />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>
