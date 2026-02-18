@@ -32,16 +32,6 @@ function Category () {
                         )
                     })
                 }
-                {/* {
-                    catrgories.map((title,index) => (
-                        <p>{title}</p>
-                        {
-                            data.map((item,index) => (
-                                item.category == title ? (<div>{item.title}</div>) : (<div>No Product Aviable</div>)
-                            ))
-                        }
-                    ))
-                } */}
                 <p></p>
             </div>
         </>
