@@ -9,7 +9,7 @@ function ProductsCards({data, isLoading}){
     return(
        <>
         {
-            data.length == 0  ? <div className="w-full h-full flex items-center justify-center">Loading....</div> 
+            data.length == 0 ? <div className="w-full h-full flex items-center justify-center">No Data Found</div> : isLoading == true ? <div className="w-full h-full flex items-center justify-center">Loading....</div> 
                 : <div className="w-full h-full grid gap-5 grid-cols-[repeat(auto-fill,minmax(200px,1fr))]">
                     {
                         data?.map((item) => (

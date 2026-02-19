@@ -3,6 +3,7 @@ import HomeImg from '../assets/home.png'
 import Cart from '../assets/menu-shopping-cart.png'
 import User from '../assets/user.png'
 import Category from '../assets/category.png'
+import Serach from './Serach';
 import { Link } from 'react-router-dom'
 import { CartContext } from '../context/CartContext'
 import { useContext } from 'react'
@@ -32,10 +33,13 @@ function Header({cartProduct}){
         
     ]
     return(
-        <header className='h-14 p-5'>
+        <header className='h-14 px-5 py-1.5'>
             <div className='w-full h-full flex items-center justify-between'>
                 <div className="HeaderLogo h-full aspect-square">
                     <img src={HeaderLogo} className='h-full w-full' />
+                </div>
+                <div className='w-1/5'>
+                    <Serach/>
                 </div>
                 <div className="flex">
                     <ul className="flex">
