@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import { useContext } from "react";
 function ProductsCards({data, isLoading}){
     const {addToCart} = useContext(CartContext)
-    
+    console.log('dataaaa',data)
     // Add to cart function
     return(
        <>

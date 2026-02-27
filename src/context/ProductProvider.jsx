@@ -26,20 +26,22 @@ export function ProductProvider({children}){
         }
     }
 
+
     function filtereProduct(search){
-        console.log(search)
+        console.log('search',search)
         if(search != null && search.length > 3)
         {
              setLoading(false)  
                 const filteredData = data.filter((item) => item.title.toLowerCase().includes(search.toLowerCase()))
                 setData(filteredData)
 
-        }else{
-            console.log('else')
-             setLoading(false)  
-             console.log(mainData)
-            setData(mainData)
         }
+        // else{
+        //     console.log('else')
+        //      setLoading(false)  
+        //      console.log('wwwwwwwwwww',mainData)
+        //     setData(mainData)
+        // }
     }
 
     return(
