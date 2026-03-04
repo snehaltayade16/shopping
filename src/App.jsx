@@ -8,6 +8,7 @@ import Category from './Components/Category';
 import Cart from './Components/Cart'
 import Profile from './Components/Profile'
 import ProductDetails from './Components/ProductDetails';
+import Login from './Components/Login'
 import { useContext } from 'react';
 import {ProductContext} from './context/ProductContext'
 import { CartContext } from './context/CartContext';
@@ -28,6 +29,7 @@ function App() {
             <Route path="/productDetails/:id" element={<ProductDetails />}></Route>
             <Route path="/Profile" element={<Profile/>}></Route>
           </Route>
+          <Route path="/login" element={<Login/>}></Route>
         </Routes>
       </BrowserRouter>
     </>

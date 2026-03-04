@@ -1,6 +1,18 @@
 import ProfilePicture from '../assets/profile.png'
 import Edit from '../assets/pencil.png'
+import { ProfileDataContext } from '../context/ProfileContext';
+import { useContext, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 function Profile(){
+    const {profileData, EditProfile} = useContext(ProfileDataContext)
+    const [editName, setEditName] = useState(false)
+    const editNameRef = useRef(null)
+    const navigate = useNavigate()
+    function saveEditProfile(){
+        if(!editNameRef.current.value) return;
+        EditProfile(editNameRef.current.value)
+        setEditName(false)
+    }
     return(
         <div className="h-full w-full p-2.5">
             <div className="flex flex-col w-full pb-2.5 border-b border-slate-400 border-dashed">
@@ -28,25 +40,39 @@ function Profile(){
                             </div>
                         </div>
                     </div>
-                    <div className="p-5 flex-grow flex flex-col justify-between">
-                        <div className="flex flex-wrap border-slate-400 pb-2.5 mb-2.5">
-                            <div class="border-b flex w-full flex flex-wrap">
-                                <div className=" w-1/2 ">
-                                    <p className="text-[#434549]">Username</p>
-                                    <p>Snehal Tayade</p>
-                                </div>
-                                <div className=" w-1/2">
-                                    <p className="text-[#434549]">Email</p>
-                                    <p>Snehal@gmail.com</p>
-                                </div>
-                                <div className=" w-1/2 ">
-                                    <p className="text-[#434549]">Address</p>
-                                    <p>Leela recidency</p>
-                                </div>
+                    <div className="pt-5 flex-grow flex flex-col justify-between">
+                        <div className="ht-100 flex flex-wrap border-slate-400 pb-2.5 mb-2.5">
+                            <div className="ht-100 flex w-full flex flex-wrap">
+                                {
+                                    profileData.map((items) => 
+                                        (
+                                            <div className='w-full flex' key={items.id}>
+                                                <div className=" w-1/2 ">
+                                                    <p className="text-[#434549]">Username</p>
+                                                    {
+                                                        editName ? <input placeholder='enter Name' type="text" autoFocus ref={editNameRef}></input> : <p onClick={() => setEditName(true)}>{items.name}</p>
+
+                                                    }
+                                                </div>
+                                                <div className=" w-1/2">
+                                                    <p className="text-[#434549]">Email</p>
+                                                    <p>{items.userName}</p>
+                                                </div>
+                                                <div className=" w-1/2 ">
+                                                    <p className="text-[#434549]">Address</p>
+                                                    <p>{items.address}</p>
+                                                </div>
+                                            </div>
+                                        )
+                                    )
+                                    
+                                    
+                                }
                             </div>
                         </div>
                         <div className='ml-auto'>
-                            <button className='cursor-pointer'>save</button>
+                            <button className='cursor-pointer mr-2.5' onClick={() => saveEditProfile()}>Save</button>
+                            <button className='cursor-pointer' onClick={() => navigate('/login')}>Logout</button>
                         </div>
                     </div>
                 </div>
