@@ -11,6 +11,7 @@ import ProductDetails from './Components/ProductDetails';
 import Login from './Components/Login'
 import { useContext } from 'react';
 import {ProductContext} from './context/ProductContext'
+import ProtectedRoutes  from './Components/ProtectedRoutes';
 import { CartContext } from './context/CartContext';
 import { useEffect } from 'react';
 
@@ -24,7 +25,7 @@ function App() {
         <Routes>
           <Route element={<Layout/>}>
             <Route path="/" element={<Home uiData={data}  isLoading={loading}/>}></Route>
-            <Route path="/cart" element={<Cart cartData={cart} />}></Route>
+            <Route path="/cart" element={<ProtectedRoutes><Cart cartData={cart} /></ProtectedRoutes>}></Route>
             <Route path="/category" element={<Category />}></Route>
             <Route path="/productDetails/:id" element={<ProductDetails />}></Route>
             <Route path="/Profile" element={<Profile/>}></Route>

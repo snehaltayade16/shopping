@@ -31,6 +31,8 @@ function Header({cartProduct}){
             path : '/profile'
         },
         
+
+        
     ]
     return(
         <header className='h-14 px-5 py-1.5'>

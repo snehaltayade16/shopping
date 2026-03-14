@@ -13,6 +13,10 @@ function Profile(){
         EditProfile(editNameRef.current.value)
         setEditName(false)
     }
+    function userLogOut(){
+        localStorage.removeItem('userLogedIn')
+        navigate('/login')
+    }
     return(
         <div className="h-full w-full p-2.5">
             <div className="flex flex-col w-full pb-2.5 border-b border-slate-400 border-dashed">
@@ -72,7 +76,7 @@ function Profile(){
                         </div>
                         <div className='ml-auto'>
                             <button className='cursor-pointer mr-2.5' onClick={() => saveEditProfile()}>Save</button>
-                            <button className='cursor-pointer' onClick={() => navigate('/login')}>Logout</button>
+                            <button className='cursor-pointer' onClick={() => userLogOut()}>Logout</button>
                         </div>
                     </div>
                 </div>
